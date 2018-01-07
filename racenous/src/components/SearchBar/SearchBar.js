@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSortByChange = this.handleSortByChange.bind(this);
+    // this.handleSortByChange = this.handleSortByChange.bind(this, sortByOptionValue);
 
     this.sortByOptions = {
       'Best Match': 'best_match',
@@ -48,13 +48,13 @@ class SearchBar extends React.Component {
 
     event.preventDefault();
   }
-
+   //普通handler，this.hander, passin envet as arg     vs    handler有arg的情况   vs    普通method不用bind，可以直接this.method(arg)
   renderSortByOptions() {
     return Object.keys(this.sortByOptions).map(sortByOption => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
       return (<li className={this.getSortByClass(sortByOptionValue)}
                   key={sortByOptionValue}
-                  onClick={this.handleSortByChange}>
+                  onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
                 {sortByOption}
              </li>);
     });
