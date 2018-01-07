@@ -49,6 +49,8 @@ class SearchBar extends React.Component {
     event.preventDefault();
   }
    //普通handler，this.hander, passin envet as arg     vs    handler有arg的情况   vs    普通method不用bind，可以直接this.method(arg)
+   //Add an onClick attribute to the <li> element. Set it equal to handleSortByChange.bind(). Pass in two arguments to .bind(): this and sortByOptionValue.
+   //This will allow us to both bind to the current value of this (as we usually do in the constructor()) but also bind the current sortByOptionValue as the first argument to the method call, ensuring the method is called with the appropriate value when clicked
   renderSortByOptions() {
     return Object.keys(this.sortByOptions).map(sortByOption => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
